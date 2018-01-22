@@ -1,6 +1,6 @@
-function Board(){
-    this.canvas = document.getElementById('canvas');
-    this.ctx = this.canvas.getContext('2d');
+function Board(canvas, ctx){
+    this.canvas = canvas
+    this.ctx = ctx
 }
 
 Board.prototype.draw=function(){
