@@ -3,7 +3,7 @@ function Board(canvas, ctx){
     this.ctx = ctx
 }
 
-Board.prototype.draw=function(){
+Board.prototype.draw =function(){
     this.ctx.fillStyle = "red";
     this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
 }

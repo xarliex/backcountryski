@@ -12,10 +12,10 @@ $(document).ready(() => {
     board.draw();
     obstacle.update();
     obstacle.draw();
-    move()
+    move();
     skier.update();
     skier.draw();
-    skier.hitObstacle(obstacle)
+    skier.hitObstacle(obstacle);
   }
 
   // document.onkeydown = function(e) {
@@ -27,7 +27,7 @@ $(document).ready(() => {
   // };
 
   document.onkeydown = function(e) {
-    console.log("DOWN")
+    console.log("DOWN");
     if (e.keyCode == 68) {
       skier.direction[0] = true;
     } else if (e.keyCode == 65) {
@@ -35,32 +35,36 @@ $(document).ready(() => {
     }
   };
   document.onkeyup = function(e) {
-    console.log("UP")
+    console.log("UP");
     if (e.keyCode == 68) {
       skier.direction[0] = false;
     } else if (e.keyCode == 65) {
       skier.direction[1] = false;
-    } 
+    }
   };
-function move (){
-  if (skier.direction[0] == true ) {
-    skier.moveRight();
-  } else if (skier.direction[1] == true ) {
-    skier.moveLeft();
-}
-  //setInterval(startGame, 300);
-  //requestAnimationFrame(startGame)
-  (function() {
-    var requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame ||
-                                window.webkitRequestAnimationFrame || window.msRequestAnimationFrame;
-    window.requestAnimationFrame = requestAnimationFrame;
-  })();
-  
-  function step() {
-      startGame()
-      requestAnimationFrame(step);
+  function move() {
+    if (skier.direction[0] == true) {
+      skier.moveRight();
+    } else if (skier.direction[1] == true) {
+      skier.moveLeft();
+    }
+    //setInterval(startGame, 300);
+    //requestAnimationFrame(startGame)
+    (function() {
+      var requestAnimationFrame =
+        window.requestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.msRequestAnimationFrame;
+      window.requestAnimationFrame = requestAnimationFrame;
+    })();
   }
-  
-  requestAnimationFrame(step);
-}
-})
+
+function step() {
+      startGame();
+      requestAnimationFrame(step);
+      console.log("hola");
+    }
+
+    requestAnimationFrame(step);
+});

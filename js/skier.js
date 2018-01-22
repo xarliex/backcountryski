@@ -51,18 +51,18 @@ Skier.prototype.hitBorderLeft = function (){
 }
 
 Skier.prototype.hitObstacle = function (obstacle){
-//     //console.log(obstacle)
-//     var ax = this.x - this.radius;
-//     var bx = this.x + this.radius;
-//     var cx = obstacle.x - obstacle.radius;
-//     var dx = obstacle.x + obstacle.radius;
-//     var ay = this.y + this.radius;
-//     var by = this.x - this.radius;
-//     var cy = obstacle.x - obstacle.radius;
-//     var dy = obstacle.x + obstacle.radius;
-//     if (((cx =< ax) && (ax <= dx))||((bx >= cx) && (bx <= dx))){
-//         if(((ay <= cy)&& (ay >= dy))|| ((by <= cy) && (by >= dy))){
-            
-//         }
-//     } 
+    //console.log(obstacle)
+    var ax = this.x - this.radius;
+    var bx = this.x + this.radius;
+    var cx = obstacle.x - obstacle.radius;
+    var dx = obstacle.x + obstacle.radius;
+    var ay = this.y + this.radius;
+    var by = this.y - this.radius;
+    var cy = obstacle.y - obstacle.radius;
+    var dy = obstacle.y + obstacle.radius;
+    if (((cx <= ax) && (ax <= dx))||((bx >= cx) && (bx <= dx))){
+        if(((ay <= cy)&& (ay >= dy))|| ((by <= cy) && (by >= dy))){
+            alert ("CRASHED!");
+        }
+    } 
 }
