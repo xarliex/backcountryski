@@ -3,12 +3,13 @@ function Skier (canvas, ctx) {
     this.ctx = ctx;
     this.canvas = canvas;
     this.x = this.canvas.width/2 - 0.5;
-    this.y = 50;
-    this.vx = 8;
+    this.y = 100;
+    this.vx = 5;
     this.vy = 0;
     this.direction =[false,false];
     this.radius = 20;
-    this.color = "#00FFFF";
+    this.color = "#70e4ff";
+    this.life = 100;
 } 
 
 Skier.prototype.draw = function (ctx){
@@ -51,8 +52,11 @@ Skier.prototype.hitBorderLeft = function (){
 Skier.prototype.hitObstacle = function (obs){
     if (Math.abs(obs.x - this.x) < (this.radius + obs.radius)-5 ){
         if(Math.abs(obs.y - this.y) < (this.radius + obs.radius)-5 ){
+            this.life = this.life - 1;
+            console.log(this.life);
             console.log("Chocamos")
             //alert ("CRASH")
+            return true
         }
     }
 }

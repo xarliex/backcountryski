@@ -4,7 +4,7 @@ function Board(canvas, ctx){
 }
 
 Board.prototype.draw =function(){
-    this.ctx.fillStyle = "red";
+    this.ctx.fillStyle = "black";
     this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
 }
 

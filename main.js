@@ -4,19 +4,41 @@ $(document).ready(() => {
   var fps = 60;
   var board = new Board(canvas, ctx);
   var skier = new Skier(canvas, ctx);
+  var ejercito = [];
   var obstacle = new Obstacle(canvas, ctx);
   //var obstacleDos = new Obstacle(canvas, ctx);
+
+
+  function createObstacle(a){
+    while(a.length < 15){
+        a.push(new Obstacle(canvas, ctx))
+    }
+  }
+
 
   function update_game() {
     board.draw();
     skier.update();
     skier.draw();
-    obstacle.draw();
-    obstacle.update();
+    createObstacle(ejercito);
+    ejercito.forEach(function (e,i) {
+      e.draw();
+      e.update();
+      e.collisionTop();
+      skier.hitObstacle(e);
+      stopGame(skier,e)
+      if(e.isAlive == false){
+        ejercito.splice(i,1)
+      }
+    })
+    //console.log(ejercito)
+    //obstacle.draw();
+    //obstacle.update();
     // obstacleDos.draw();
     // obstacleDos.update();
     move();
-    skier.hitObstacle(obstacle);
+    
+    //obstacle.collisionTop();
   }
 
   document.onkeydown = function(e) {
@@ -69,13 +91,13 @@ $(document).ready(() => {
 
 });
 
-function stopGame() {
+function stopGame(s,e) {
   var cancelAnimationFrame =
     window.cancelAnimationFrame ||
     window.mozCancelAnimationFrame ||
     window.webkitRequestAnimationFrame ||
     window.msRequestAnimationFrame;
-  if (skier.hitObstacle() == true) {
-    cancelAnimationFrame;
-  }
+    if (s.hitObstacle(e) == true) {
+      cancelAnimationFrame(animate);
+    }
 }
