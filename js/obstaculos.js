@@ -21,3 +21,4 @@ Obstacle.prototype.update = function (){
     this.y += this.vy;
     this.draw();
 }
+

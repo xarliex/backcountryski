@@ -3,13 +3,12 @@ function Skier (canvas, ctx) {
     this.ctx = ctx;
     this.canvas = canvas;
     this.x = this.canvas.width/2 - 0.5;
-    this.y = 25;
+    this.y = 50;
     this.vx = 8;
     this.vy = 0;
     this.direction =[false,false];
     this.radius = 20;
     this.color = "#00FFFF";
-   
 } 
 
 Skier.prototype.draw = function (ctx){
@@ -22,12 +21,10 @@ Skier.prototype.draw = function (ctx){
 
 Skier.prototype.moveLeft = function (){
     this.x -= this.vx;
-    console.log(this.x)
 }
 
 Skier.prototype.moveRight = function (){
     this.x += this.vx;
-    console.log(this.x)
 }
 
 Skier.prototype.update = function (){
@@ -50,19 +47,12 @@ Skier.prototype.hitBorderLeft = function (){
     }
 }
 
-Skier.prototype.hitObstacle = function (obstacle){
-    //console.log(obstacle)
-    var ax = this.x - this.radius;
-    var bx = this.x + this.radius;
-    var cx = obstacle.x - obstacle.radius;
-    var dx = obstacle.x + obstacle.radius;
-    var ay = this.y + this.radius;
-    var by = this.y - this.radius;
-    var cy = obstacle.y - obstacle.radius;
-    var dy = obstacle.y + obstacle.radius;
-    if (((cx <= ax) && (ax <= dx))||((bx >= cx) && (bx <= dx))){
-        if(((ay <= cy)&& (ay >= dy))|| ((by <= cy) && (by >= dy))){
-            alert ("CRASHED!");
+
+Skier.prototype.hitObstacle = function (obs){
+    if (Math.abs(obs.x - this.x) < (this.radius + obs.radius)-5 ){
+        if(Math.abs(obs.y - this.y) < (this.radius + obs.radius)-5 ){
+            console.log("Chocamos")
+            //alert ("CRASH")
         }
-    } 
+    }
 }
