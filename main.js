@@ -28,7 +28,7 @@ $(document).ready(() => {
     skier.update();
     skier.draw();
     skier.drawScore();
-    skier.drawLife();
+    skier.drawHealthBar();
     move();
     createObstacle(ejercito);
     ejercito.forEach(function(e, i) {

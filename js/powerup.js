@@ -23,13 +23,13 @@ Power.prototype.draw = function() {
 };
 
 Power.prototype.update = function() {
-    this.counter++
-    if(this.counter%100==0){
-        this.vx = this.vx*-1
-    }
-   this.y += this.vy;
-   this.x += this.vx;
-this.draw();
+  this.counter++;
+  if (this.counter % 100 == 0) {
+    this.vx = this.vx * -1;
+  }
+  this.y += this.vy;
+  this.x += this.vx;
+  this.draw();
 };
 
 Power.prototype.collisionTop = function() {
