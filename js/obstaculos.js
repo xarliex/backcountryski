@@ -1,3 +1,4 @@
+
 function Obstacle (canvas, ctx) {
     var randomPosX = Math.random()*(canvas.width)
     var randomPosY = Math.ceil(Math.random()*((canvas.height*2)-canvas.height)+canvas.height)
