@@ -10,23 +10,40 @@ $(document).ready(() => {
   //var obstacle = new Obstacle(canvas, ctx);
   //var obstacleDos = new Obstacle(canvas, ctx);
 
-  function createObstacle(a) {
-    while (a.length < 15) {
-      a.push(new Obstacle(canvas, ctx));
-    }
+
+
+  function numberObstacle(a) {
+    var number;
+    if(skier.score <= 25){ number = Math.ceil((skier.score+4)/5) }
+    if(skier.score > 25 && skier.score <= 100){ number = Math.ceil((skier.score+9)/7) }
+    if(skier.score > 100 && skier.score <= 200){ number = Math.ceil((skier.score+10)/9) }
+    if (skier.score > 200){ number = 20}
+    console.log(ejercito.length)
+    return number;
   }
 
-  function createProtection(a){
-    while (a.length < 2){
-      a.push(new Power(canvas,ctx));
-    }
+  function createObstacle(a){
+    while (a.length < numberObstacle()) {a.push(new Obstacle(canvas, ctx))}
   }
 
+  function createProtection(a) {
+  if (skier.score <= 150) {
+    while (a.length < 1) {
+      a.push(new Power(canvas, ctx));
+    }
+  } else if (skier.score > 150){
+    while (a.length < 4) {
+      a.push(new Power(canvas, ctx));
+    } 
+  }
+};
 
   function update_game() {
     board.draw();
     skier.update();
     skier.draw();
+    skier.drawTrack(skier);
+    skier.drawLife();
     skier.drawScore();
     skier.drawHealthBar();
     move();
@@ -41,18 +58,31 @@ $(document).ready(() => {
         skier.score += 1;
         ejercito.splice(i, 1);
       }
+      if (skier.score > 50 && skier.score <= 100){
+        e.vy = -7.5;
+      } if (skier.score > 100 && skier.score <= 150){
+        e.vy = -8;
+      } if (skier.score > 150 && skier.score <= 200){
+        e.vy = -8.5;
+      } if (skier.score > 200 && skier.score <= 250){
+        e.vy = -9;
+      } if (skier.score > 250 && skier.score <= 300){
+        e.vy = -9.5;
+      } if (skier.score > 300){
+        e.vy = -10;
+      }
     });
     createProtection(redbull);
-    redbull.forEach(function(e,i){
+    redbull.forEach(function(e, i) {
       e.draw();
       e.update();
       e.collisionTop();
       skier.hitPower(e);
-      if (e.isAlive == false){
-        redbull.splice(i,1);
+      if (e.isAlive == false) {
+        redbull.splice(i, 1);
       }
     });
-  }
+  };
 
   document.onkeydown = function(e) {
     //console.log("DOWN");
@@ -100,7 +130,7 @@ $(document).ready(() => {
 
   function startgame() {
     requestAnimationFrame(animate);
-   }
+  }
 
 });
 
@@ -117,4 +147,4 @@ function stopGame(s, e) {
       cancelAnimationFrame(animate);
     }
   }
-}
+};

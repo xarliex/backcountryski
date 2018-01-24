@@ -24,7 +24,7 @@ Power.prototype.draw = function() {
 
 Power.prototype.update = function() {
   this.counter++;
-  if (this.counter % 100 == 0) {
+  if (this.counter % 50 == 0) {
     this.vx = this.vx * -1;
   }
   this.y += this.vy;
