@@ -7,18 +7,22 @@ function Obstacle (canvas, ctx) {
     this.vx = 0;
     this.vy = -7;
     this.radius = 15;
-    this.color = "#78d168";
+    this.height = 110;
+    this.width = 90;
+    this.image = new Image();
+    this.color = "red";
     this.ctx = ctx;
     this.isAlive = true;
 } 
 
 Obstacle.prototype.draw = function (){
-    this.ctx.beginPath();
-    this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
-    this.ctx.closePath();
-    this.ctx.fillStyle = this.color;
-    this.ctx.fill();
-    //console.log(this.y)
+    // this.ctx.beginPath();
+    // this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+    // this.ctx.closePath();
+    // this.ctx.fillStyle = this.color;
+    // this.ctx.fill();
+    this.image.src = "./Images/Tree.png";
+    this.ctx.drawImage(this.image, (this.x-30), (this.y-35), this.width, this.height);
 }
 
 Obstacle.prototype.update = function (){

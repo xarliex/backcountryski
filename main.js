@@ -28,7 +28,7 @@ $(document).ready(() => {
 
   function createProtection(a) {
   if (skier.score <= 150) {
-    while (a.length < 1) {
+    while (a.length < 100) {
       a.push(new Power(canvas, ctx));
     }
   } else if (skier.score > 150){
@@ -143,6 +143,8 @@ function stopGame(s, e) {
 
   if (s.life <= -1) {
     if (s.hitObstacle(e) == true) {
+      s.image.src = "images/dead.png";
+      s.ctx.drawImage(s.image, (s.xDead-35), (s.yDead-40), s.widthDead, s.heightDead);
       s.life = 0;
       cancelAnimationFrame(animate);
     }

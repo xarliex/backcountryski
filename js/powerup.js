@@ -12,14 +12,19 @@ function Power(canvas, ctx) {
   this.ctx = ctx;
   this.isAlive = true;
   this.counter = 0;
+  this.image = new Image ();
+  this.width = 43;
+  this.height = 43;
 }
 
 Power.prototype.draw = function() {
-  this.ctx.beginPath();
-  this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
-  this.ctx.closePath();
-  this.ctx.fillStyle = this.color;
-  this.ctx.fill();
+//   this.ctx.beginPath();
+//   this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
+//   this.ctx.closePath();
+//   this.ctx.fillStyle = this.color;
+//   this.ctx.fill();
+  this.image.src = "Images/present.png";
+  this.ctx.drawImage(this.image, (this.x-17), (this.y-11), this.width, this.height);
 };
 
 Power.prototype.update = function() {

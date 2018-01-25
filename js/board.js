@@ -5,7 +5,7 @@ function Board(canvas, ctx){
 }
 
 Board.prototype.draw =function(){
-    this.ctx.fillStyle = "grey";
+    this.ctx.fillStyle = "white";
     this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height);
 }
 
