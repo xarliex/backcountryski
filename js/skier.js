@@ -166,7 +166,7 @@ Skier.prototype.hitPower = function(pwr) {
 
 Skier.prototype.theEnd = function (ctx){
   if (this.life = 0){
-    this.image.src = "Images/dead.png";
+    this.image.src = "images/dead.png";
     this.ctx.drawImage(this.image, (this.xDead-35), (this.yDead-40), this.widthDead, this.heightDead);
   }
 }

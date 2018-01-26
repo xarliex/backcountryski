@@ -21,7 +21,7 @@ Obstacle.prototype.draw = function (){
     // this.ctx.closePath();
     // this.ctx.fillStyle = this.color;
     // this.ctx.fill();
-    this.image.src = "./Images/Tree.png";
+    this.image.src = "./images/Tree.png";
     this.ctx.drawImage(this.image, (this.x-30), (this.y-35), this.width, this.height);
 }
 
