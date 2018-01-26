@@ -7,9 +7,25 @@ $(document).ready(() => {
   var skier = new Skier(canvas, ctx);
   var ejercito = [];
   var redbull = [];
+  var stelar = [];
+  var stelarDos = [];
   //var obstacle = new Obstacle(canvas, ctx);
   //var obstacleDos = new Obstacle(canvas, ctx);
 
+  function play(){
+    var audio = document.getElementById("audio");
+    audio.play();
+  }
+
+  function createStelar(skier){
+    stelar.push({x:skier.x, y:skier.y})
+    if(stelar.length > 100){
+      stelar.splice(0,1)
+    } stelarDos.push({x:skier.x, y:skier.y})
+    if(stelarDos.length > 100){
+      stelarDos.splice(0,1)
+  }
+}
 
 
   function numberObstacle(a) {
@@ -17,8 +33,8 @@ $(document).ready(() => {
     if(skier.score <= 25){ number = Math.ceil((skier.score+4)/5) }
     if(skier.score > 25 && skier.score <= 100){ number = Math.ceil((skier.score+9)/7) }
     if(skier.score > 100 && skier.score <= 200){ number = Math.ceil((skier.score+10)/9) }
-    if (skier.score > 200){ number = 20}
-    console.log(ejercito.length)
+    if (skier.score > 200){ number = 23}
+    //console.log(ejercito.length)
     return number;
   }
 
@@ -28,7 +44,7 @@ $(document).ready(() => {
 
   function createProtection(a) {
   if (skier.score <= 150) {
-    while (a.length < 100) {
+    while (a.length < 1) {
       a.push(new Power(canvas, ctx));
     }
   } else if (skier.score > 150){
@@ -42,12 +58,20 @@ $(document).ready(() => {
     board.draw();
     skier.update();
     skier.draw();
-    skier.drawTrack(skier);
+    //skier.drawTrack(skier);
     skier.drawLife();
     skier.drawScore();
     skier.drawHealthBar();
     move();
     createObstacle(ejercito);
+    createStelar(skier)
+    //console.log(stelar)
+    stelar.forEach(function(e){
+      skier.drawTrack(e)
+    })
+    stelarDos.forEach(function(e){
+      skier.drawTrackDos(e)
+    })
     ejercito.forEach(function(e, i) {
       e.draw();
       e.update();
@@ -92,6 +116,7 @@ $(document).ready(() => {
       skier.direction[1] = true;
     } else if (e.keyCode == 32) {
       startgame();
+      play();
     }
   };
 
@@ -143,10 +168,10 @@ function stopGame(s, e) {
 
   if (s.life <= -1) {
     if (s.hitObstacle(e) == true) {
-      s.image.src = "images/dead.png";
-      s.ctx.drawImage(s.image, (s.xDead-35), (s.yDead-40), s.widthDead, s.heightDead);
       s.life = 0;
+      s.theEnd();
       cancelAnimationFrame(animate);
     }
   }
 };
+
