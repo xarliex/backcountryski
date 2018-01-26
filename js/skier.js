@@ -12,7 +12,7 @@ function Skier(canvas, ctx) {
   this.image = new Image();
   this.width = 70;
   this.height = 70;
-  this.life = 10;
+  this.life = 100;
   this.score = 0;
   this.widthDead = 200;
   this.heightDead = 200;
