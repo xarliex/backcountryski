@@ -153,8 +153,6 @@ Skier.prototype.hitObstacle = function(obs) {
 Skier.prototype.hitPower = function(pwr) {
   if (Math.abs(pwr.x - this.x) < this.radius + pwr.radius - 5) {
     if (Math.abs(pwr.y - this.y) < this.radius + pwr.radius - 5) {
-      this.image.src = "images/heart.png";
-      this.ctx.drawImage(this.image, (this.x-17), (this.y-11), this.width, this.height);
       if (this.life >= 95) {
         this.life += 100 - this.life;
       } else {

@@ -18,11 +18,6 @@ function Power(canvas, ctx) {
 }
 
 Power.prototype.draw = function() {
-//   this.ctx.beginPath();
-//   this.ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2, true);
-//   this.ctx.closePath();
-//   this.ctx.fillStyle = this.color;
-//   this.ctx.fill();
   this.image.src = "images/present.png";
   this.ctx.drawImage(this.image, (this.x-17), (this.y-11), this.width, this.height);
 };
@@ -40,7 +35,5 @@ Power.prototype.update = function() {
 Power.prototype.collisionTop = function() {
   if (this.y <= -60) {
     this.isAlive = false;
-    //   } else if (Skier.hitpower() = true){
-    //       this.isAlive = false;
   }
 };

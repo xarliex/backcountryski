@@ -1,5 +1,5 @@
 body {
-
+    background-color: green;
     text-align: center; 
     background-image: url("images/bg-sky.jpg");
     background-size: cover;
@@ -19,7 +19,7 @@ canvas{
     float: left;
 } 
 .overlay{
-
+    background-color: red;
     background: url("images/Picture2.png");
     height: 870px;
     width: 434px;
@@ -35,33 +35,42 @@ canvas{
     float: left;
     width: auto;
     height: auto;
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-bottom: 30px;
-    padding-right: 30px;
+    padding-top: 0.5%;
+    padding-left: 2%;
+    padding-bottom: 2%;
+    padding-right: 2%;
 }
 
-.heading{
+.logo{
+    background-color: yellow;
+    width: 400px;
+    height: 200px; 
+    padding-bottom: 2%;
+}
+
+.logo img{
     width: auto;
-    height: auto;
-    color: white;
-    padding: 20px;
+    max-width: 100%;
+    height: auto; 
+    padding: 5%;
+    box-sizing: border-box; 
 }
 
-p {
-    font-size: 30px;
-    font-style: Helvetica;
-    font-weight: bold;
-}
 
 .controlers{
-    width: auto;
-    height: auto;
-    padding-right: 500px;
-    padding-top: 30px;
-    padding-left: 30px;
-    padding-bottom: 30px;
+    background-color: purple;
+    width: 400px;
+    height: 350px;
+    padding-top: 2%;
     float: left;
+}
+
+.controlers img{
+    width: auto;
+    max-width: 100%;
+    height: auto; 
+    padding: 5%;
+    box-sizing: border-box; 
 }
 
 
