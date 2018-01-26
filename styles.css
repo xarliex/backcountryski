@@ -1,6 +1,7 @@
 body {
+    
     text-align: center; 
-    background-image: url("Images/wall.jpg");
+    background-image: url("images/wall.jpg");
     background-size: cover;
     /*background-image: url("Images/Picture1.png")*/
 
@@ -18,7 +19,8 @@ canvas{
     float: left;
 } 
 .overlay{
-    background: url(Images/Picture2.png);
+
+    background: url("images/Picture2.png");
     height: 870px;
     width: 434px;
     position: absolute;
